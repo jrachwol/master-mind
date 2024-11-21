@@ -20,13 +20,13 @@ public class GameManager {
             display.printAttemptPrompt(codeDiscoveryAttemptNumber);
             String attemptCode = inputSource.nextLine();
 
-            Validator.validateAttemptCode(attemptCode);
-            int rightDigitsOnRightPosition = checkRightDigitsOnRightPosition(codeToDiscover, attemptCode);
+            ValidatonService.validateAttemptCode(attemptCode);
+            int rightDigitsOnRightPosition = CheckingService.checkRightDigitsOnRightPosition(codeToDiscover, attemptCode);
+            int correctDigitsOnWrongPosition = CheckingService.checkCorrectDigitsOnWrongPosition(attemptCode, codeToDiscover);
             if (rightDigitsOnRightPosition == 4) {
                 display.printCodeDiscoveredMessage(codeToDiscover, attemptCode);
             } else {
-                System.out.println("Kod do odgadnięcia: " + codeToDiscover);
-                display.printAttemptResult(rightDigitsOnRightPosition);
+                display.printAttemptResult(rightDigitsOnRightPosition, correctDigitsOnWrongPosition);
                 codeDiscoveryAttemptNumber++;
                 playGame(inputSource, codeToDiscover);
             }
@@ -35,15 +35,4 @@ public class GameManager {
             playGame(inputSource, codeToDiscover);
         }
     }
-
-    private int checkRightDigitsOnRightPosition(String codeToDiscovery, String attemptCode) {
-        int rightDigitsOnRightPosition = 0;
-        for (int i = 0; i < 4; i++) {
-            if (attemptCode.charAt(i) == codeToDiscovery.charAt(i)) {
-                rightDigitsOnRightPosition++;
-            }
-        }
-        return rightDigitsOnRightPosition;
-    }
-
 }

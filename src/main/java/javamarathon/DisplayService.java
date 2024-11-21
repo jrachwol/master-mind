@@ -18,8 +18,9 @@ public class DisplayService {
         System.out.print("Wprowadź kod do sprawdzenia (próba: " + codeDiscoveryAttemptNumber + "): ");
     }
 
-    public void printAttemptResult(int rightDigitsOnRightPosition) {
+    public void printAttemptResult(int rightDigitsOnRightPosition, int correctDigitsOnWrongPosition) {
         System.out.println("Odgadnięte cyfry na właściwym miejscu: " + rightDigitsOnRightPosition);
+        System.out.println("Odgadnięte cyfry na błędnym miejscu: " + correctDigitsOnWrongPosition);
     }
 
     public void printCodeDiscoveredMessage(String codeToDiscover, String attemptCode) {
