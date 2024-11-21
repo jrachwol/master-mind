@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class GameManager {
 
     private DisplayService display;
+    private int codeDiscoveryAttemptNumber = 1;
 
     public GameManager(DisplayService display) {
         this.display = display;
@@ -16,7 +17,7 @@ public class GameManager {
 
     public void playGame(Scanner inputSource, String codeToDiscover) {
         try {
-            display.printAttemptPrompt();
+            display.printAttemptPrompt(codeDiscoveryAttemptNumber);
             String attemptCode = inputSource.nextLine();
 
             Validator.validateAttemptCode(attemptCode);
@@ -26,6 +27,7 @@ public class GameManager {
             } else {
                 System.out.println("Kod do odgadnięcia: " + codeToDiscover);
                 display.printAttemptResult(rightDigitsOnRightPosition);
+                codeDiscoveryAttemptNumber++;
                 playGame(inputSource, codeToDiscover);
             }
         } catch (CodeDiscoveryAttemptException e) {
