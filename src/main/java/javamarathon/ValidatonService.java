@@ -1,6 +1,6 @@
 package javamarathon;
 
-public class Validator {
+public class ValidatonService {
 
     public static void validateAttemptCode(String attemptCode) throws CodeDiscoveryAttemptException {
         if (attemptCode.length() != 4) {
