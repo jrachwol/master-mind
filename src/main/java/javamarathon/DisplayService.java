@@ -14,8 +14,17 @@ public class DisplayService {
         System.out.println("Do odgadnięcia jest 4-cyfrowy kod. Każda cyfra to liczba od 0 do 9.");
     }
 
-    public void printAttemptPrompt() {
-        System.out.print("Wprowadź kod do sprawdzenia: ");
+    public void printAttemptPrompt(int codeDiscoveryAttemptNumber) {
+        System.out.print("Wprowadź kod do sprawdzenia (próba: " + codeDiscoveryAttemptNumber + "): ");
     }
+
+    public void printAttemptResult(int rightDigitsOnRightPosition) {
+        System.out.println("Odgadnięte cyfry na właściwym miejscu: " + rightDigitsOnRightPosition);
+    }
+
+    public void printCodeDiscoveredMessage(String codeToDiscover, String attemptCode) {
+        System.out.print("Brawo, odkryłeś kod!: Kod do odgadnięcia: " + codeToDiscover + " Twój kod: " + attemptCode);
+    }
+
 
 }
